@@ -16,7 +16,7 @@ class GetFlickr
     static let source = "https://api.flickr.com/services/rest?method=flickr.photos.search&api_key=37bf4c51bc2e4f0d67fbea0aa6b66464&extras=url_n&format=json&safe_search=1&per_page=30&page=1&nojsoncallback=1"
 
     
-
+   
     static func location(pin: Pin) -> String
     
         {
@@ -31,9 +31,7 @@ class GetFlickr
     //retrieve info
     class func showResult(latitude: Double, longitude: Double, pin: Pin, completion: @escaping([FlickrPhoto]?, Error?)->Void)
     {
-    
-        let url = URL(string: source + "\(location(pin: pin))" + "\(Int.random(in: 1...10))")!
-
+        let url = URL(string: source + "&lat = \(latitude)&lon=\(longitude)")
         print(url)
 
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
