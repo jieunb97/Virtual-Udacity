@@ -31,11 +31,16 @@ class GetFlickr
     //retrieve info
     class func showResult(latitude: Double, longitude: Double, pin: Pin, completion: @escaping([FlickrPhoto]?, Error?)->Void)
     {
-        let url = URL(string: source + "&lat = \(latitude)&lon=\(longitude)")
+    
+        
+        let url = URL(string: source + "&lat=\(latitude)&lon=\(longitude)")
         print(url)
+        
+        guard let unwrappedURL = url else {
+            return
+        }
 
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-
+        let task = URLSession.shared.dataTask(with: unwrappedURL) { (data, response, error) in
         if error != nil
 
         {
