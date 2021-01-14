@@ -115,7 +115,7 @@ protocol FRCCollectionViewDelegate: class
             
             initialSetup()
             
-            GetFlickr.showResult(latitude: Double, longitude: Double, pin: Pin) { (list, error) in
+            GetFlickr.showResult(latitude: pin.lat, longitude: pin.lon, pin: pin) { (list, error) in
            
     
             self.countPhotos = list?.count ?? 0
